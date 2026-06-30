@@ -1,0 +1,29 @@
+.main-content {
+  padding: 40px 0;
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  h1 {
+    font-size: 64px;
+    font-family: $font_two;
+    margin-bottom: 10px;
+  }
+
+  h1, p {
+    width: 100%;
+  }
+
+  p {
+    font-family: $sub_font;
+  }
+
+  img {
+    margin: 0 auto;
+    width: 100%;
+    object-fit: contain;
+  }
+}

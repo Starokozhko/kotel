@@ -1,0 +1,51 @@
+.images {
+    margin-bottom: 32px;
+}
+
+.images-list {
+    display: grid;
+    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.images-item img {
+    width: 100%;
+    height: 260px;
+    object-fit: contain;
+    display: block;
+}
+
+.price-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.price-count {
+    margin: 0 0 6px;
+    text-decoration: line-through;
+    opacity: .7;
+    font-size: 20px;
+}
+
+.options {
+    margin-bottom: 32px;
+}
+
+.options__table {
+    border: 1px solid #ddd;
+}
+
+.options__row {
+    display: grid;
+    grid-template-columns:220px 1fr;
+    border-bottom: 1px solid #eee;
+}
+
+.options__row-cel {
+    padding: 10px;
+}
+
+.options__row-title {
+    font-weight: 600;
+}

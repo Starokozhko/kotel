@@ -1,0 +1,63 @@
+/* yp-my-listings.css       — мої оголошення */
+.yp-my-listings {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    @media only screen and (min-width: 767px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    grid-column-gap: 10px;
+    grid-row-gap: 10px
+}
+
+.yp-my-listings-item h3 {
+    font-size: 21px;
+}
+
+.btn-wrapper {
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    gap: 20px;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.edit-link {
+    padding: 6px 15px;
+    border: 2px solid #46b450;
+    text-decoration: none;
+    color: #46b450;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+.edit-link:hover,
+.edit-link:focus {
+    text-decoration: none;
+    background-color: #46b450;
+    color: #fff;
+}
+
+.btn-trash {
+    border: 2px solid #d63638;
+    color: #d63638;
+    padding: 6px 15px;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 700;
+    transition: all .3s ease-in-out;
+}
+
+.btn-trash:hover,
+.btn-trash:focus {
+    background-color: #d63638;
+    color: #fff;
+}
+
+.yp-my-listings-item-wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+

@@ -1,0 +1,70 @@
+// Project mixins
+
+@mixin align-middle {
+	@include transform(translate(-50%, -50%));
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+@mixin vert-align {
+	font-size: 0;
+	white-space: nowrap;
+	&:before {
+		content: '';
+		height: 100%;
+		width: 0;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	> * {
+		vertical-align: middle;
+		display: inline-block;
+		white-space: normal;
+	}
+}
+
+@mixin justify-elems {
+	text-align: justify;
+	font-size: 0;
+	> * {
+		float: none;
+		display: inline-block;
+	}
+	&:after {
+		content: '';
+		display: inline-block;
+		width: 100%;
+		height: 0;
+		line-height: 0;
+	}
+}
+
+@mixin list-unstyled {
+	margin: 0;
+	list-style: none;
+	padding: 0;
+}
+
+//declare variables below
+
+
+$first: #0f4b90;
+$second: #296cb0;
+$yellow: #fcbb1d;
+$green: #70a647;
+
+$dark: #02324e;
+$black: #011128;
+$light: #90d0e3;
+
+$text_color: $black;
+
+$main_color: $first;
+$sub_color: $dark;
+// $sub_color:
+
+
+$font: 'Open Sans', sans-serif;
+ $sub_font: 'Inter', sans-serif;
+$font_two: 'Sora';

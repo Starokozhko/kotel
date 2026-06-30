@@ -1,0 +1,14 @@
+/* yp-support-request.css — сторінка “Відправити запит” */
+.yp-support-request {
+    max-width: 760px;
+}
+
+.yp-support-request h1 {
+    margin-top: 0;
+}
+
+.yp-support-request__notice {
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    background: #fff;
+}

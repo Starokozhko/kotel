@@ -1,0 +1,255 @@
+@import "inc/mixins";
+@import "inc/vars";
+
+/*-=Desktop screens=-*/
+@media only screen and (max-width: 1199px) {
+  /*max-width 992px, tablet screens*/
+}
+
+/*-=Tablet screens=-*/
+@media only screen and (max-width: 991px) {
+  /*max-width 992px, tablet screens*/
+}
+
+/*-=Small screens=-*/
+@media only screen and (max-width: 767px) {
+  /* TOP BAR Mobile STYLING */
+
+
+  .navbar-collapse {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 100;
+    transition: top 0.3s ease;
+
+    &.show {
+      top: 0;
+
+    }
+  }
+  .no-gutter-sm {
+    padding-left: 0;
+    padding-right: 0;
+
+    .row {
+      margin-right: 0;
+      margin-left: 0;
+
+      > .col,
+      > [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+  }
+
+  .header-menu {
+    background-color: $main-color;
+    padding-bottom: 8px;
+    //margin-left: -15px;
+    //margin-right: -15px;
+  }
+  .navbar {
+    background-color: transparent; // $main-color;
+    padding: 0;
+
+    .navbar-header {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    .nav-item {
+      &.current-menu-item, &.current_page_ancestor {
+        > a {
+          background: lighten($main-color, 5) !important; /* current/parent menu item background color */
+        }
+      }
+    }
+
+    .nav-link, .dropdown-item {
+      display: block;
+      font-family: $font;
+      color: white; /* menu item text color */
+      font-size: 14px;
+      background: transparent; //$main-color; /* menu item background color */
+      line-height: 45px;
+      padding: 0 15px;
+
+      &:hover {
+        background: darken($main-color, 5) !important; /* menu item background color on hover */
+      }
+    }
+
+    .dropdown-menu {
+      //margin-left: 15px;
+      //margin-right: 15px;
+      margin-top: 0;
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      border-radius: 0;
+
+      .dropdown-item {
+        padding-left: 25px;
+      }
+    }
+  }
+  .navbar-toggler {
+    position: relative;
+    display: inline-block;
+    padding: 0 10px 0 35px;
+    //margin-left: 15px;
+    height: 36px;
+    background-color: transparent;
+    vertical-align: top;
+    cursor: pointer;
+    outline: none;
+
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 30px;
+      height: 4px;
+      background: #000;
+      top: 50%;
+      left: 7px;
+      margin-top: -12px;
+      box-shadow: 0 10px 0 #000, 0 20px 0 #000;
+    }
+
+    span {
+      display: none;
+      //font-size: 16px;
+    }
+
+    &-closed {
+      position: relative;
+      display: inline-block;
+      padding: 10px;
+      height: auto;
+      background-color: transparent;
+      vertical-align: top;
+      cursor: pointer;
+      outline: none;
+      border: none;
+
+      &:focus {
+        border: none;
+        outline: none;
+      }
+
+      span {
+        display: none;
+      }
+    }
+  }
+
+  .alignright, .alignleft, .aligncenter, .alignnone {
+    float: none;
+    margin: 0 0 1em;
+  }
+
+  .sidebar {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  /* Small screens */
+
+}
+
+/* max-width 640px and lower. Use this for mobiles only */
+
+/*-=Medium screens=-*/
+@media only screen and (min-width: 768px) {
+  /* TOP BAR STYLING */
+
+  .navbar {
+    padding: 0;
+
+    .navbar-nav {
+      .nav-link {
+        /* Regular menu item style */
+        display: block;
+        padding: 0 15px;
+        background: transparent;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 40px;
+        color: $main-color;
+        font-family: $font;
+
+        &:hover {
+          /* menu item style on hover */
+          background: $main-color;
+          color: #fff;
+        }
+      }
+
+      .current-menu-item, .current_page_ancestor, .current_page_parent {
+        > a {
+          /* Style of Current page and Ancestor page */
+          background: $main-color;
+          color: #fff;
+        }
+      }
+
+      .dropdown-menu {
+        margin-top: 0;
+        border: none;
+        padding: 0;
+        border-radius: 0;
+      }
+
+      .dropdown-item {
+        /* Regular link in dropdown */
+        background: invert($main-color);
+        color: #fff;
+        padding: 5px 15px;
+        line-height: 30px;
+
+        &:hover {
+          /* Dropdown link on hover */
+          background: lighten($main-color, 10);
+          color: white;
+        }
+      }
+    }
+  }
+
+  /* Dropdown item styling */
+
+  .navbar .nav-item:hover > .nav-link {
+    /* Parent link style on dropdown hover */
+    //background: invert($main-color);
+    //color: #fff;
+  }
+
+  /* Align Menu to the right
+       #main-menu-links { justify-content: flex-end; } */
+  /* Align Menu to the center
+       #main-menu-links { justify-content: center; } */
+
+}
+
+/* min-width 641px */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* min-width 641px and max-width 1024px, use when QAing tablet-only issues*/
+}
+
+/*-=Large screens=-*/
+@media only screen and (min-width: 992px) {
+  /*min-width 1025px, large screens*/
+}
+
+@media only screen and (min-width: 1200px) {
+  /* min-width 1201px, large screens*/
+}

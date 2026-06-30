@@ -1,0 +1,145 @@
+.latest_ads {
+  padding: 80px 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  align-items: anchor-center;
+
+  p, h2 {
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  &__sub-title {
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 40px;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__date {
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__link {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    padding: 8px 20px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: $text_color;
+    width: 100%;
+    max-width: 32%;
+    margin: 0 auto;
+
+    &:hover,
+    &:focus {
+      background-color: #0f4b90;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  &__list {
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    @media screen and (min-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      max-height: 280px;
+    }
+
+    &-info {
+      padding: 20px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      gap: 16px;
+
+      h3 {
+        font-size: 25px;
+        margin-bottom: 0;
+        font-family: $font_two;
+      }
+
+      p {
+        text-align: left;
+        font-size: 14px;
+      }
+    }
+  }
+
+  &__cat-link,
+  &__cat-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: $text_color;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  &__cat-title {
+    padding: 2px 10px;
+    background-color: #e2e2e2;
+    font-size: 12px;
+  }
+
+  &__cat-link {
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+.latest_ads__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.latest_ads__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

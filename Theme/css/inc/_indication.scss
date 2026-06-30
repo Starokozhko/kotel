@@ -1,0 +1,106 @@
+.kotelva-alert {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.3;
+  background: #f2f2f2;
+  color: #222;
+  @media screen and (max-width: 767px) {
+    order: 2;
+  }
+}
+
+.kotelva-alert__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  background: #999;
+}
+
+.kotelva-alert__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.kotelva-alert__label {
+  font-weight: 700;
+}
+
+.kotelva-alert__message {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.kotelva-alert--active {
+  background: #ffe5e5;
+  color: #8a0000;
+}
+
+.kotelva-alert--active .kotelva-alert__dot {
+  background: #d60000;
+  animation: kotelva-alert-pulse 1.2s infinite;
+}
+
+.kotelva-alert--partial {
+  background: #fff4d6;
+  color: #7a4a00;
+}
+
+.kotelva-alert--partial .kotelva-alert__dot {
+  background: #f0a000;
+}
+
+.kotelva-alert--clear {
+  background: #e7f7ec;
+  color: #145c2e;
+}
+
+.kotelva-alert--clear .kotelva-alert__dot {
+  background: #1c9b4a;
+}
+
+.kotelva-alert--unknown {
+  background: #eeeeee;
+  color: #555;
+}
+
+
+
+@media screen and (max-width: 767px) {
+  .mob-header-order {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mob-header-order {
+    align-items: center;
+    height: 100%;
+    display: flex;
+  }
+}
+
+@keyframes kotelva-alert-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.45;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

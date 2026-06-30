@@ -1,0 +1,19 @@
+/*  yp-listing-form.css      — форма подачі оголошення */
+.yp-listing-form  input,
+.yp-listing-form textarea,
+.yp-listing-form select {
+    padding: 10px 15px;
+}
+
+.yp-listing-form button,
+.yp-listing-form button[type=button] {
+    padding: 10px 15px;
+    font-weight: 700;
+}
+.yp-listing-form button:not(:disabled):hover,
+.yp-listing-form button:not(:disabled):focus,
+.yp-listing-form button[type=button]:hover,
+.yp-listing-form button[type=button]:focus {
+    background-color: #000;
+    color: #fff;
+}

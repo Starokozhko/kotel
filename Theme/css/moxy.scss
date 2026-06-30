@@ -1,0 +1,32 @@
+@import "inc/mixins";
+@import "inc/vars";
+//@import "inc/normalize"; //comment this line if you don't use slider
+
+
+@import "inc/general";
+@import "inc/header";
+
+@import "inc/slider";
+@import "inc/indication";
+@import "inc/product-list";
+@import "inc/woocommerce";
+@import "inc/main-content";
+
+@import "inc/categories-m";
+@import "inc/categories-free";
+
+// секція з оголошеннями (слайдер)
+@import "inc/ogoloshennya-zmishani";
+@import "inc/part-ogoloshennya_all";
+@import "inc/latest_ads";
+@import "inc/steps";
+@import "inc/ads_section";
+
+
+/* Listings */
+@import "inc/listing/listing-card";
+@import "inc/listing/listings-archive";
+
+
+
+@import "inc/footer";

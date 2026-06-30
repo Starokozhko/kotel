@@ -1,0 +1,33 @@
+/* ------------------------------------
+    Footer Styles
+------------------------------------- */
+
+.footer {
+  background-color: $main_color;
+  padding: 60px 0 20px;
+  color: #fff;
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  &__content {
+    padding: 10px 0 30px;
+  }
+}
+
+
+.footer-menu {
+  @include list-unstyled;
+
+  li {
+    display: inline-block;
+
+    a {
+      display: block;
+      padding: 5px 10px;
+    }
+  }
+}

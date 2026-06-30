@@ -1,0 +1,53 @@
+/*  yp-account.css           — загальні стилі акаунта, навігація, layout  */
+.yp-account-nav {
+    margin-bottom: 24px;
+}
+
+.yp-account-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.yp-account-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #222;
+    background: #fff;
+    transition: 0.2s ease;
+}
+
+.yp-account-nav a:hover,
+.yp-account-nav a.curent,
+.yp-account-nav a.current {
+    background: #222;
+    color: #fff;
+    border-color: #222;
+    text-decoration: none;
+}
+
+
+.yp-auth-form input,
+.yp-auth-form textarea,
+.yp-auth-form select {
+    padding: 10px 15px;
+}
+
+.yp-auth-form button[type=submit] {
+    padding: 10px 15px;
+    font-weight: 700;
+}
+
+.yp-auth-form button[type=submit]:hover,
+.yp-auth-form button[type=submit]:focus {
+    background-color: #000;
+    color: #fff;
+}
