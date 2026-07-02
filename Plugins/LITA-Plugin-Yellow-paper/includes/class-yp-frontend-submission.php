@@ -514,7 +514,7 @@ class YP_Frontend_Submission
         }
 
         if ($this->success_message !== '') {
-            echo '<div class="yp-form-success" style="margin-bottom:20px;padding:12px;border:1px solid #46b450;background:#f6fff6;">';
+            echo '<div class="yp-form-success" style="margin-bottom:20px;padding:12px;border:1px solid #70a647;background:#f6fff6;">';
             echo '<p style="margin:0;">' . esc_html($this->success_message) . '</p>';
             echo '</div>';
         }
@@ -1121,7 +1121,7 @@ class YP_Frontend_Submission
 
     private function render_notice($message)
     {
-        echo '<div style="margin-bottom:20px;padding:12px;border:1px solid #46b450;background:#f6fff6;">';
+        echo '<div style="margin-bottom:20px;padding:12px;border:1px solid #70a647;background:#f6fff6;">';
         echo '<p style="margin:0;">' . esc_html($message) . '</p>';
         echo '</div>';
     }

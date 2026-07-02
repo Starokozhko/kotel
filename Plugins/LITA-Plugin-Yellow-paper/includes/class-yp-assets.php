@@ -28,7 +28,7 @@ class YP_Assets {
          * Архів оголошень:
          * archive-yp_listing.php
          */
-        if (is_post_type_archive('yp_listing')) {
+        if (is_post_type_archive('yp_listing') || is_page_template('templates/template-find-yours.php')) {
             $this->enqueue_css(
                 'yp-listings-archive',
                 'assets/css/yp-listings-archive.css'

@@ -247,7 +247,7 @@ class YP_Account {
         }
 
         if ($this->success_message !== '') {
-            echo '<div style="margin-bottom:20px;padding:12px;border:1px solid #46b450;background:#f6fff6;">';
+            echo '<div style="margin-bottom:20px;padding:12px;border:1px solid #70a647;background:#f6fff6;">';
             echo '<p style="margin:0;">' . esc_html($this->success_message) . '</p>';
             echo '</div>';
         }

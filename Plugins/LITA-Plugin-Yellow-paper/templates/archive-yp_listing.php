@@ -220,7 +220,10 @@ get_header();
                 <?php while (have_posts()) : the_post(); ?>
                     <?php
                     $card = $loader->get_listing_card_data(get_the_ID());
-                    include YP_CLASSIFIEDS_PATH . 'templates/parts/listing-card.php';
+                    $listing_card_template = $loader->get_template_path('parts/listing-card.php');
+                    if ($listing_card_template) {
+                        include $listing_card_template;
+                    }
                     ?>
                 <?php endwhile; ?>
             </div>

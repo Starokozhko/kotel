@@ -24,9 +24,9 @@
 
 .edit-link {
     padding: 6px 15px;
-    border: 2px solid #46b450;
+    border: 2px solid #70a647;
     text-decoration: none;
-    color: #46b450;
+    color: #70a647;
     font-size: 18px;
     line-height: 1.4;
     font-weight: 700;
@@ -35,7 +35,7 @@
 .edit-link:hover,
 .edit-link:focus {
     text-decoration: none;
-    background-color: #46b450;
+    background-color: #70a647;
     color: #fff;
 }
 

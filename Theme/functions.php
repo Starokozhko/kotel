@@ -41,18 +41,18 @@ add_theme_support('custom-background', array('default-color' => 'fff'));
 
 // Custom Header
 add_theme_support('custom-header', array(
-    'default-image' => get_template_directory_uri() . '/images/custom-logo.png',
-    'height' => '200',
-    'flex-height' => true,
-    'uploads' => true,
-    'header-text' => false
+        'default-image' => get_template_directory_uri() . '/images/custom-logo.png',
+        'height' => '200',
+        'flex-height' => true,
+        'uploads' => true,
+        'header-text' => false
 ));
 
 // Custom Logo
 add_theme_support('custom-logo', array(
-    'height' => '150',
-    'flex-height' => true,
-    'flex-width' => true,
+        'height' => '150',
+        'flex-height' => true,
+        'flex-width' => true,
 ));
 
 function show_custom_logo($size = 'medium')
@@ -71,15 +71,15 @@ function show_custom_logo($size = 'medium')
 
 // Add HTML5 elements
 add_theme_support('html5', array(
-    'comment-list',
-    'search-form',
-    'comment-form',
+        'comment-list',
+        'search-form',
+        'comment-form',
 ));
 
 // Register Navigation Menu
 register_nav_menus(array(
-    'header-menu' => 'Header Menu',
-    'footer-menu' => 'Footer Menu'
+        'header-menu' => 'Header Menu',
+        'footer-menu' => 'Footer Menu'
 ));
 
 
@@ -94,14 +94,14 @@ function bootstrap_pagination($query = '')
     $big = 999999999;
 
     $links = paginate_links(array(
-        'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-        'format' => '?paged=%#%',
-        'prev_next' => true,
-        'prev_text' => '&laquo;',
-        'next_text' => '&raquo;',
-        'current' => max(1, get_query_var('paged')),
-        'total' => $query->max_num_pages,
-        'type' => 'list'
+            'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+            'format' => '?paged=%#%',
+            'prev_next' => true,
+            'prev_text' => '&laquo;',
+            'next_text' => '&raquo;',
+            'current' => max(1, get_query_var('paged')),
+            'total' => $query->max_num_pages,
+            'type' => 'list'
     ));
 
     $pagination = str_replace('page-numbers', 'pagination', $links);
@@ -115,13 +115,13 @@ function bootstrap_widgets_init()
 {
     /* Sidebar Right */
     register_sidebar(array(
-        'id' => 'bootstrap_sidebar_right',
-        'name' => __('Sidebar Right'),
-        'description' => __('This sidebar is located on the right-hand side of each page.'),
-        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-        'after_widget' => '</aside>',
-        'before_title' => '<h5>',
-        'after_title' => '</h5>',
+            'id' => 'bootstrap_sidebar_right',
+            'name' => __('Sidebar Right'),
+            'description' => __('This sidebar is located on the right-hand side of each page.'),
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => '</aside>',
+            'before_title' => '<h5>',
+            'after_title' => '</h5>',
     ));
 }
 
@@ -197,79 +197,82 @@ add_action('wp_enqueue_scripts', 'bootstrap_scripts_and_styles');
 function post_type_slider()
 {
     $post_type_slider_labels = array(
-        'name' => _x('Slider', 'post type general name'),
-        'singular_name' => _x('Slide', 'post type singular name'),
-        'add_new' => _x('Add New', 'slide'),
-        'add_new_item' => __('Add New'),
-        'edit_item' => __('Edit'),
-        'new_item' => __('New '),
-        'all_items' => __('All'),
-        'view_item' => __('View'),
-        'search_items' => __('Search for a slide'),
-        'not_found' => __('No slides found'),
-        'not_found_in_trash' => __('No slides found in the Trash'),
-        'parent_item_colon' => '',
-        'menu_name' => 'Slider'
+            'name' => _x('Slider', 'post type general name'),
+            'singular_name' => _x('Slide', 'post type singular name'),
+            'add_new' => _x('Add New', 'slide'),
+            'add_new_item' => __('Add New'),
+            'edit_item' => __('Edit'),
+            'new_item' => __('New '),
+            'all_items' => __('All'),
+            'view_item' => __('View'),
+            'search_items' => __('Search for a slide'),
+            'not_found' => __('No slides found'),
+            'not_found_in_trash' => __('No slides found in the Trash'),
+            'parent_item_colon' => '',
+            'menu_name' => 'Slider'
     );
     $post_type_slider_args = array(
-        'labels' => $post_type_slider_labels,
-        'description' => 'Display Slider',
-        'public' => true,
-        'menu_icon' => 'dashicons-format-gallery',
-        'menu_position' => 5,
-        'supports' => array(
-            'title',
-            'thumbnail',
-            'page-attributes',
-            'editor',
-            'post-formats'
-        ),
-        'has_archive' => true,
-        'hierarchical' => true
+            'labels' => $post_type_slider_labels,
+            'description' => 'Display Slider',
+            'public' => true,
+            'menu_icon' => 'dashicons-format-gallery',
+            'menu_position' => 5,
+            'supports' => array(
+                    'title',
+                    'thumbnail',
+                    'page-attributes',
+                    'editor',
+                    'post-formats'
+            ),
+            'has_archive' => true,
+            'hierarchical' => true
     );
-    register_post_type( 'slider', $post_type_slider_args );
-    add_theme_support( 'post-formats', array( 'video' ) );
-    remove_post_type_support( 'post', 'post-formats' );
+    register_post_type('slider', $post_type_slider_args);
+    add_theme_support('post-formats', array('video'));
+    remove_post_type_support('post', 'post-formats');
 }
 
 add_action('init', 'post_type_slider');
 
 
-add_action( 'add_meta_boxes', 'slide_background_metabox' );
-function slide_background_metabox() {
-    $screens = array( 'slider' );
-    add_meta_box( 'slide_background', 'Slide background', 'slider_background_callback', $screens );
+add_action('add_meta_boxes', 'slide_background_metabox');
+function slide_background_metabox()
+{
+    $screens = array('slider');
+    add_meta_box('slide_background', 'Slide background', 'slider_background_callback', $screens);
 }
 
-function slider_background_callback( $post, $meta ) {
-    wp_nonce_field( 'save_video_bg', 'foundation_nonce' );
+function slider_background_callback($post, $meta)
+{
+    wp_nonce_field('save_video_bg', 'foundation_nonce');
 
     echo '<p class="label-wrapper"><label for="slide_video" style="display: block;"><b>Video background</b></label></p>';
-    echo '<input type="text" id= "slide_video" name="slide_video_bg" value="' . get_post_meta( $post->ID, 'slide_video_bg', true ) . '" style="width: 100%;"/>';
+    echo '<input type="text" id= "slide_video" name="slide_video_bg" value="' . get_post_meta($post->ID, 'slide_video_bg', true) . '" style="width: 100%;"/>';
 }
 
 /**
  * Update slide background on slide save
  */
-add_action( 'save_post', 'save_slide_background' );
+add_action('save_post', 'save_slide_background');
 
-function save_slide_background( $post_id ) {
+function save_slide_background($post_id)
+{
 
-    if ( ! isset( $_POST['slide_video_bg'] ) ) {
+    if (!isset($_POST['slide_video_bg'])) {
         return;
     }
 
-    if ( ! wp_verify_nonce( $_POST['foundation_nonce'], 'save_video_bg' ) ) {
+    if (!wp_verify_nonce($_POST['foundation_nonce'], 'save_video_bg')) {
         return;
     }
-    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
         return;
     }
-    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+    if (!current_user_can('edit_post', $post_id)) {
         return;
     }
 
-    update_post_meta( $post_id, 'slide_video_bg', $_POST['slide_video_bg'] );
+    update_post_meta($post_id, 'slide_video_bg', $_POST['slide_video_bg']);
 
 }
 
@@ -277,29 +280,30 @@ function save_slide_background( $post_id ) {
  * Print script to hande appearance of metabox
  */
 //add_action('admin_enqueue_scripts','display_metaboxes');
-add_action( 'admin_footer', 'display_metaboxes' );
+add_action('admin_footer', 'display_metaboxes');
 
-function display_metaboxes() {
+function display_metaboxes()
+{
 
-    if ( get_post_type() == "slider" ) :
+    if (get_post_type() == "slider") :
         ?>
         <script type="text/javascript">// <![CDATA[
             $ = jQuery;
 
             function displayMetaboxes() {
-                $( '#slide_background' ).hide();
-                var selectedFormat = $( 'input[name=\'post_format\']:checked' ).val();
-                if ( selectedFormat == 'video' ) {
-                    $( '#slide_background' ).show();
+                $('#slide_background').hide();
+                var selectedFormat = $('input[name=\'post_format\']:checked').val();
+                if (selectedFormat == 'video') {
+                    $('#slide_background').show();
                 }
             }
 
-            $( function() {
+            $(function () {
                 displayMetaboxes();
-                $( 'input[name=\'post_format\']' ).change( function() {
+                $('input[name=\'post_format\']').change(function () {
                     displayMetaboxes();
-                } );
-            } );
+                });
+            });
             // ]]></script>
     <?php
     endif;
@@ -307,19 +311,20 @@ function display_metaboxes() {
 
 // Enable control over YouTube iframe through API + add unique ID
 
-function add_youtube_iframe_args( $html, $url, $args ) {
+function add_youtube_iframe_args($html, $url, $args)
+{
 
     /* Modify video parameters. */
-    if ( strstr( $html, 'youtube.com/embed/' ) && ! empty( $args['location'] ) ) {
-        preg_match_all( '|embed/(.*)\?|', $html, $matches );
-        $html = str_replace( '?feature=oembed', '?feature=oembed&enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&showinfo=0&rel=0&playlist=' . $matches[1][0], $html );
-        $html = str_replace( '<iframe', '<iframe rel="0" enablejsapi="1" id=slide-' . get_the_ID(), $html );
+    if (strstr($html, 'youtube.com/embed/') && !empty($args['location'])) {
+        preg_match_all('|embed/(.*)\?|', $html, $matches);
+        $html = str_replace('?feature=oembed', '?feature=oembed&enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&showinfo=0&rel=0&playlist=' . $matches[1][0], $html);
+        $html = str_replace('<iframe', '<iframe rel="0" enablejsapi="1" id=slide-' . get_the_ID(), $html);
     }
 
     return $html;
 }
 
-add_filter( 'oembed_result', 'add_youtube_iframe_args', 10, 3 );
+add_filter('oembed_result', 'add_youtube_iframe_args', 10, 3);
 
 // Customize Login Screen
 function wordpress_login_styling()
@@ -365,11 +370,11 @@ add_filter('login_headerurl', 'admin_logo_custom_url');
 if (function_exists('acf_add_options_page')) {
 
     acf_add_options_page(array(
-        'page_title' => 'Theme General Settings',
-        'menu_title' => 'Theme Settings',
-        'menu_slug' => 'theme-general-settings',
-        'capability' => 'edit_posts',
-        'redirect' => false
+            'page_title' => 'Theme General Settings',
+            'menu_title' => 'Theme Settings',
+            'menu_slug' => 'theme-general-settings',
+            'capability' => 'edit_posts',
+            'redirect' => false
     ));
 
 }
@@ -433,8 +438,8 @@ add_filter('gform_confirmation_anchor', '__return_false');
 add_filter('use_block_editor_for_post_type', '__return_false');
 
 
-
-function cache_template_part($slug, $args = [], $ttl = 12 * HOUR_IN_SECONDS) {
+function cache_template_part($slug, $args = [], $ttl = 12 * HOUR_IN_SECONDS)
+{
     $cache_key = 'tpl_' . md5($slug . serialize($args) . get_the_ID());
 
     // Спроба взяти з кешу
@@ -521,7 +526,8 @@ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single
 /**
  * Отримати ID останніх публічних оголошень з кешем.
  */
-function yp_get_latest_paid_approved_listing_ids($limit = 10) {
+function yp_get_latest_paid_approved_listing_ids($limit = 10)
+{
     $limit = absint($limit);
 
     if ($limit <= 0) {
@@ -537,31 +543,31 @@ function yp_get_latest_paid_approved_listing_ids($limit = 10) {
     }
 
     $query = new WP_Query(array(
-            'post_type'              => 'yp_listing',
-            'post_status'            => 'publish',
-            'posts_per_page'         => $limit,
-            'fields'                 => 'ids',
-            'no_found_rows'          => true,
-            'ignore_sticky_posts'    => true,
-            'orderby'                => 'date',
-            'order'                  => 'DESC',
+            'post_type' => 'yp_listing',
+            'post_status' => 'publish',
+            'posts_per_page' => $limit,
+            'fields' => 'ids',
+            'no_found_rows' => true,
+            'ignore_sticky_posts' => true,
+            'orderby' => 'date',
+            'order' => 'DESC',
             'update_post_meta_cache' => true,
             'update_post_term_cache' => false,
-            'meta_query'             => array(
+            'meta_query' => array(
                     'relation' => 'AND',
                     array(
-                            'key'     => '_yp_payment_status',
-                            'value'   => 'paid',
+                            'key' => '_yp_payment_status',
+                            'value' => 'paid',
                             'compare' => '=',
                     ),
                     array(
-                            'key'     => '_yp_moderation_status',
-                            'value'   => 'approved',
+                            'key' => '_yp_moderation_status',
+                            'value' => 'approved',
                             'compare' => '=',
                     ),
                     array(
-                            'key'     => '_yp_visibility',
-                            'value'   => 'public',
+                            'key' => '_yp_visibility',
+                            'value' => 'public',
                             'compare' => '=',
                     ),
             ),
@@ -573,9 +579,11 @@ function yp_get_latest_paid_approved_listing_ids($limit = 10) {
 
     return $ids;
 }
+
 //delete_transient('yp_latest_paid_approved_listing_ids_10');
 
-function yp_normalize_term_ids($terms) {
+function yp_normalize_term_ids($terms)
+{
     if (empty($terms)) {
         return array();
     }
@@ -597,16 +605,17 @@ function yp_normalize_term_ids($terms) {
     return array_filter(array_unique($ids));
 }
 
-function yp_get_listings_section_ids($args = array()) {
+function yp_get_listings_section_ids($args = array())
+{
     $defaults = array(
-            'limit'      => 30,
+            'limit' => 30,
             'order_type' => 'latest_created',
             'categories' => array(),
     );
 
     $args = wp_parse_args($args, $defaults);
 
-    $limit      = absint($args['limit']);
+    $limit = absint($args['limit']);
     $order_type = sanitize_key($args['order_type']);
     $categories = yp_normalize_term_ids($args['categories']);
 
@@ -615,29 +624,29 @@ function yp_get_listings_section_ids($args = array()) {
     }
 
     $query_args = array(
-            'post_type'              => 'yp_listing',
-            'post_status'            => 'publish',
-            'posts_per_page'         => $limit,
-            'fields'                 => 'ids',
-            'no_found_rows'          => true,
-            'ignore_sticky_posts'    => true,
+            'post_type' => 'yp_listing',
+            'post_status' => 'publish',
+            'posts_per_page' => $limit,
+            'fields' => 'ids',
+            'no_found_rows' => true,
+            'ignore_sticky_posts' => true,
             'update_post_meta_cache' => true,
             'update_post_term_cache' => true,
-            'meta_query'             => array(
+            'meta_query' => array(
                     'relation' => 'AND',
                     array(
-                            'key'     => '_yp_payment_status',
-                            'value'   => array('paid', 'manual'),
+                            'key' => '_yp_payment_status',
+                            'value' => array('paid', 'manual'),
                             'compare' => 'IN',
                     ),
                     array(
-                            'key'     => '_yp_moderation_status',
-                            'value'   => 'approved',
+                            'key' => '_yp_moderation_status',
+                            'value' => 'approved',
                             'compare' => '=',
                     ),
                     array(
-                            'key'     => '_yp_visibility',
-                            'value'   => 'public',
+                            'key' => '_yp_visibility',
+                            'value' => 'public',
                             'compare' => '=',
                     ),
             ),
@@ -647,8 +656,8 @@ function yp_get_listings_section_ids($args = array()) {
         $query_args['tax_query'] = array(
                 array(
                         'taxonomy' => 'yp_listing_category',
-                        'field'    => 'term_id',
-                        'terms'    => $categories,
+                        'field' => 'term_id',
+                        'terms' => $categories,
                 ),
         );
     }
@@ -656,7 +665,7 @@ function yp_get_listings_section_ids($args = array()) {
     switch ($order_type) {
         case 'latest_updated':
             $query_args['orderby'] = 'modified';
-            $query_args['order']   = 'DESC';
+            $query_args['order'] = 'DESC';
             break;
 
         case 'random':
@@ -665,13 +674,13 @@ function yp_get_listings_section_ids($args = array()) {
 
         case 'alphabet':
             $query_args['orderby'] = 'title';
-            $query_args['order']   = 'ASC';
+            $query_args['order'] = 'ASC';
             break;
 
         case 'latest_created':
         default:
             $query_args['orderby'] = 'date';
-            $query_args['order']   = 'DESC';
+            $query_args['order'] = 'DESC';
             break;
     }
 
@@ -697,7 +706,8 @@ function yp_get_listings_section_ids($args = array()) {
     return $ids;
 }
 
-function yp_clear_listings_section_cache() {
+function yp_clear_listings_section_cache()
+{
     global $wpdb;
 
     $wpdb->query(
@@ -714,7 +724,8 @@ add_action('deleted_post', 'yp_clear_listings_section_cache');
 add_action('trashed_post', 'yp_clear_listings_section_cache');
 add_action('untrashed_post', 'yp_clear_listings_section_cache');
 
-function yp_clear_listings_section_cache_on_meta_change($meta_id, $object_id, $meta_key, $_meta_value) {
+function yp_clear_listings_section_cache_on_meta_change($meta_id, $object_id, $meta_key, $_meta_value)
+{
     if (get_post_type($object_id) !== 'yp_listing') {
         return;
     }
@@ -743,7 +754,8 @@ add_action('deleted_post_meta', 'yp_clear_listings_section_cache_on_meta_change'
  * Air Alert Indicator for Kotelva / Poltava oblast.
  */
 
-function kotelva_get_air_alert_status() {
+function kotelva_get_air_alert_status()
+{
     $cache_key = 'kotelva_air_alert_status_v1';
 
     $cached = get_transient($cache_key);
@@ -754,8 +766,8 @@ function kotelva_get_air_alert_status() {
 
     if (!defined('KOTELVA_ALERTS_TOKEN') || empty(KOTELVA_ALERTS_TOKEN)) {
         return array(
-                'status'  => 'unknown',
-                'label'   => 'Статус тривоги недоступний',
+                'status' => 'unknown',
+                'label' => 'Статус тривоги недоступний',
                 'message' => 'Не налаштований API-токен.',
         );
     }
@@ -778,8 +790,8 @@ function kotelva_get_air_alert_status() {
 
     if (is_wp_error($response)) {
         $result = array(
-                'status'  => 'unknown',
-                'label'   => 'Статус тривоги недоступний',
+                'status' => 'unknown',
+                'label' => 'Статус тривоги недоступний',
                 'message' => $response->get_error_message(),
         );
 
@@ -792,8 +804,8 @@ function kotelva_get_air_alert_status() {
 
     if ($code !== 200 || empty($body)) {
         $result = array(
-                'status'  => 'unknown',
-                'label'   => 'Статус тривоги недоступний',
+                'status' => 'unknown',
+                'label' => 'Статус тривоги недоступний',
                 'message' => 'API повернуло помилку.',
         );
 
@@ -803,26 +815,26 @@ function kotelva_get_air_alert_status() {
 
     if ($body === 'A') {
         $result = array(
-                'status'  => 'active',
-                'label'   => 'Повітряна тривога',
+                'status' => 'active',
+                'label' => 'Повітряна тривога',
                 'message' => 'У Полтавській області зараз оголошена повітряна тривога.',
         );
     } elseif ($body === 'P') {
         $result = array(
-                'status'  => 'partial',
-                'label'   => 'Часткова тривога',
+                'status' => 'partial',
+                'label' => 'Часткова тривога',
                 'message' => 'У частині районів або громад області є тривога.',
         );
     } elseif ($body === 'N') {
         $result = array(
-                'status'  => 'clear',
-                'label'   => 'Тривоги немає',
+                'status' => 'clear',
+                'label' => 'Тривоги немає',
                 'message' => 'Зараз немає інформації про активну повітряну тривогу.',
         );
     } else {
         $result = array(
-                'status'  => 'unknown',
-                'label'   => 'Статус невідомий',
+                'status' => 'unknown',
+                'label' => 'Статус невідомий',
                 'message' => 'Невідомий статус від API.',
         );
     }
@@ -833,7 +845,8 @@ function kotelva_get_air_alert_status() {
     return $result;
 }
 
-function kotelva_air_alert_shortcode() {
+function kotelva_air_alert_shortcode()
+{
     $alert = kotelva_get_air_alert_status();
 
     $class = 'kotelva-alert kotelva-alert--' . sanitize_html_class($alert['status']);
@@ -854,23 +867,25 @@ function kotelva_air_alert_shortcode() {
     <?php
     return ob_get_clean();
 }
+
 add_shortcode('kotelva_air_alert', 'kotelva_air_alert_shortcode');
 /* Реалізація індикатора повітряних тривог END */
 
 
 /* Підрахунок наявності оголошень в дочірніх категоріях START */
-function kotelva_category_has_listings_with_children($term_id, $taxonomy = 'yp_listing_category') {
+function kotelva_category_has_listings_with_children($term_id, $taxonomy = 'yp_listing_category')
+{
     $query = new WP_Query(array(
-            'post_type'      => 'yp_listing',
-            'post_status'    => 'publish',
+            'post_type' => 'yp_listing',
+            'post_status' => 'publish',
             'posts_per_page' => 1,
-            'fields'         => 'ids',
-            'no_found_rows'  => true,
-            'tax_query'      => array(
+            'fields' => 'ids',
+            'no_found_rows' => true,
+            'tax_query' => array(
                     array(
-                            'taxonomy'         => $taxonomy,
-                            'field'            => 'term_id',
-                            'terms'            => (int) $term_id,
+                            'taxonomy' => $taxonomy,
+                            'field' => 'term_id',
+                            'terms' => (int)$term_id,
                             'include_children' => true,
                     ),
             ),
@@ -878,23 +893,25 @@ function kotelva_category_has_listings_with_children($term_id, $taxonomy = 'yp_l
 
     return $query->have_posts();
 }
+
 /* Підрахунок наявності оголошень в дочірніх категоріях END */
 
-    /* Хелпер для кешування запиту на останні 3 оголошення START */
+/* Хелпер для кешування запиту на останні 3 оголошення START */
 
 /**
  * Формат дати для картки оголошення:
  * Сьогодні / Вчора / 5.06.26
  */
-function kotelva_format_listing_date($post_id) {
-    $post_time = (int) get_post_time('U', false, $post_id);
+function kotelva_format_listing_date($post_id)
+{
+    $post_time = (int)get_post_time('U', false, $post_id);
 
     if (!$post_time) {
         return '';
     }
 
     $post_date = wp_date('Y-m-d', $post_time);
-    $today     = wp_date('Y-m-d', current_time('timestamp'));
+    $today = wp_date('Y-m-d', current_time('timestamp'));
     $yesterday = wp_date('Y-m-d', strtotime('-1 day', current_time('timestamp')));
 
     if ($post_date === $today) {
@@ -991,4 +1008,262 @@ add_action('transition_post_status', function ($new_status, $old_status, $post) 
 
 
 //delete_transient('kotelva_latest_listings_3');
-    /* Хелпер для кешування запиту на останні 3 оголошення END */
+/* Хелпер для кешування запиту на останні 3 оголошення END */
+/**
+ * Yellow Paper theme template overrides and category sliders.
+ */
+function lita_locate_yp_template($relative_path)
+{
+    $relative_path = ltrim((string)$relative_path, '/\\');
+
+    if ($relative_path === '') {
+        return '';
+    }
+
+    $theme_template = locate_template(array(
+            'yellow-paper-classifieds/' . $relative_path,
+    ));
+
+    if ($theme_template) {
+        return $theme_template;
+    }
+
+    if (defined('YP_CLASSIFIEDS_PATH')) {
+        $plugin_template = YP_CLASSIFIEDS_PATH . 'templates/' . $relative_path;
+
+        if (file_exists($plugin_template)) {
+            return $plugin_template;
+        }
+    }
+
+    return '';
+}
+
+function lita_resolve_yp_listing_category_term($category) {
+    if ($category instanceof WP_Term) {
+        return $category;
+    }
+
+    if (is_array($category)) {
+        if (!empty($category['term_id'])) {
+            $term = get_term((int) $category['term_id'], 'yp_listing_category');
+            return ($term && !is_wp_error($term)) ? $term : null;
+        }
+
+        if (!empty($category['slug'])) {
+            $term = get_term_by('slug', sanitize_title($category['slug']), 'yp_listing_category');
+            return ($term && !is_wp_error($term)) ? $term : null;
+        }
+    }
+
+    if (is_numeric($category)) {
+        $term = get_term((int) $category, 'yp_listing_category');
+        return ($term && !is_wp_error($term)) ? $term : null;
+    }
+
+    if (is_string($category) && $category !== '') {
+        $term = get_term_by('slug', sanitize_title($category), 'yp_listing_category');
+        return ($term && !is_wp_error($term)) ? $term : null;
+    }
+
+    return null;
+}
+
+function lita_get_acf_image_data($image) {
+    $data = array(
+            'url' => '',
+            'alt' => '',
+    );
+
+    if (empty($image)) {
+        return $data;
+    }
+
+    if (is_array($image)) {
+        if (!empty($image['url'])) {
+            $data['url'] = $image['url'];
+            $data['alt'] = !empty($image['alt']) ? $image['alt'] : (!empty($image['title']) ? $image['title'] : '');
+            return $data;
+        }
+
+        if (!empty($image['ID'])) {
+            $image = (int) $image['ID'];
+        } elseif (!empty($image['id'])) {
+            $image = (int) $image['id'];
+        }
+    }
+
+    if (is_numeric($image)) {
+        $image_id = (int) $image;
+        $data['url'] = wp_get_attachment_image_url($image_id, 'thumbnail');
+        $data['alt'] = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+        return $data;
+    }
+
+    if (is_string($image)) {
+        $data['url'] = $image;
+    }
+
+    return $data;
+}
+
+function lita_render_yp_category_slider_section($args = array())
+{
+    if (
+            !class_exists('YP_Template_Loader') ||
+            !class_exists('YP_Listing_Images') ||
+            !class_exists('YP_User_Profile')
+    ) {
+        return;
+    }
+
+    $args = wp_parse_args($args, array(
+            'category' => null,
+            'term_slug' => '',
+            'title' => '',
+            'icon' => null,
+            'modifier' => '',
+            'limit' => 15,
+    ));
+
+    $term = lita_resolve_yp_listing_category_term($args['category']);
+
+    if (!$term && $args['term_slug'] !== '') {
+        $term = lita_resolve_yp_listing_category_term($args['term_slug']);
+    }
+
+    if (!$term) {
+        return;
+    }
+
+    $modifier = sanitize_html_class($args['modifier'] ?: $term->slug);
+    $limit = max(1, absint($args['limit']));
+    $icon = lita_get_acf_image_data($args['icon']);
+
+    $term_link = get_term_link($term, 'yp_listing_category');
+
+    if (is_wp_error($term_link)) {
+        $term_link = '';
+    }
+
+    $query = new WP_Query(array(
+            'post_type' => 'yp_listing',
+            'post_status' => 'publish',
+            'posts_per_page' => $limit,
+            'ignore_sticky_posts' => true,
+            'no_found_rows' => true,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'tax_query' => array(
+                    array(
+                            'taxonomy' => 'yp_listing_category',
+                            'field' => 'term_id',
+                            'terms' => (int)$term->term_id,
+                            'include_children' => true,
+                    ),
+            ),
+            'meta_query' => array(
+                    'relation' => 'AND',
+                    array(
+                            'key' => '_yp_visibility',
+                            'value' => 'public',
+                            'compare' => '=',
+                    ),
+                    array(
+                            'key' => '_yp_moderation_status',
+                            'value' => 'approved',
+                            'compare' => '=',
+                    ),
+            ),
+    ));
+
+    if (!$query->have_posts()) {
+        wp_reset_postdata();
+        return;
+    }
+
+    $loader = new YP_Template_Loader(new YP_Listing_Images(), new YP_User_Profile());
+    $compact_template = lita_locate_yp_template('parts/listing-card-compact.php');
+
+    if (!$compact_template) {
+        wp_reset_postdata();
+        return;
+    }
+
+    $section_title = $args['title'] !== '' ? $args['title'] : $term->name;
+    ?>
+    <section class="yp-category-slider yp-category-slider--<?php echo esc_attr($modifier); ?> yp-listing-<?php echo esc_attr($modifier); ?>">
+        <div class="yp-category-slider__header">
+            <div class="yp-category-slider__title-wrap">
+                <span class="yp-category-slider__icon" aria-hidden="true">
+                    <?php if (!empty($icon['url'])) : ?>
+                        <img src="<?php echo esc_url($icon['url']); ?>" alt="<?php echo esc_attr($icon['alt']); ?>" loading="lazy">
+                    <?php else : ?>
+                        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 10L18.5145 17.4276C18.3312 18.3439 18.2396 18.8021 18.0004 19.1448C17.7894 19.447 17.499 19.685 17.1613 19.8326C16.7783 20 16.3111 20 15.3766 20H8.62337C7.6889 20 7.22166 20 6.83869 19.8326C6.50097 19.685 6.2106 19.447 5.99964 19.1448C5.76041 18.8021 5.66878 18.3439 5.48551 17.4276L4 10M20 10H18M20 10H21M4 10H3M4 10H6M6 10H18M6 10L9 4M18 10L15 4M9 13V16M12 13V16M15 13V16"
+                                  stroke="#46b450" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    <?php endif; ?>
+                </span>
+                <h2 class="subtitle"><?php echo esc_html($section_title); ?></h2>
+            </div>
+
+            <?php if ($term_link !== '') : ?>
+                <a class="yp-category-slider__archive-link" href="<?php echo esc_url($term_link); ?>">
+                    <?php esc_html_e('Переглянути всі в категорії', 'yellow-paper-classifieds'); ?>
+                    <span aria-hidden="true">→</span>
+                </a>
+            <?php endif; ?>
+        </div>
+
+        <div class="yp-category-slider__slider swiper">
+            <div class="swiper-wrapper">
+                <?php while ($query->have_posts()) : $query->the_post(); ?>
+                    <div class="swiper-slide">
+                        <?php
+                        $card = $loader->get_listing_card_data(get_the_ID());
+                        include $compact_template;
+                        ?>
+                    </div>
+                <?php endwhile; ?>
+            </div>
+
+            <button class="yp-category-slider__prev" type="button"
+                    aria-label="<?php esc_attr_e('Попередні оголошення', 'yellow-paper-classifieds'); ?>" hidden>
+                <span aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.2893 18.2929C13.8988 18.6834 13.2656 18.6834 12.8751 18.2929L7.9877 13.4006C7.2073 12.6195 7.2076 11.3537 7.9883 10.5729L12.8787 5.68254C13.2692 5.29202 13.9024 5.29202 14.2929 5.68254C14.6835 6.07307 14.6835 6.70623 14.2929 7.09676L10.1073 11.2824C9.7167 11.6729 9.7167 12.3061 10.1073 12.6966L14.2893 16.8787C14.6798 17.2692 14.6798 17.9023 14.2893 18.2929Z" fill="#ffffff"/>
+                    </svg>
+                </span>
+            </button>
+
+            <button class="yp-category-slider__next" type="button"
+                    aria-label="<?php esc_attr_e('Наступні оголошення', 'yellow-paper-classifieds'); ?>">
+                <span aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z" fill="#ffffff"/>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </section>
+    <?php
+    wp_reset_postdata();
+}
+function lita_enqueue_find_yours_assets()
+{
+    if (!is_page_template('templates/template-find-yours.php')) {
+        return;
+    }
+
+    wp_enqueue_script(
+            'yp-category-listing-slider',
+            get_template_directory_uri() . '/js/yp-category-listing-slider.js',
+            array(),
+            filemtime(get_template_directory() . '/js/yp-category-listing-slider.js'),
+            true
+    );
+}
+
+add_action('wp_enqueue_scripts', 'lita_enqueue_find_yours_assets', 20);

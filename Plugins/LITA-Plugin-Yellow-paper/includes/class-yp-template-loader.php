@@ -20,15 +20,29 @@ class YP_Template_Loader {
 
     public function template_include($template) {
         if (is_post_type_archive(YP_Post_Types::POST_TYPE)) {
-            $plugin_template = YP_CLASSIFIEDS_PATH . 'templates/archive-yp_listing.php';
-            if (file_exists($plugin_template)) {
+            $theme_template = $this->locate_theme_template('archive-yp_listing.php');
+
+            if ($theme_template) {
+                return $theme_template;
+            }
+
+            $plugin_template = $this->get_plugin_template_path('archive-yp_listing.php');
+
+            if ($plugin_template) {
                 return $plugin_template;
             }
         }
 
         if (is_singular(YP_Post_Types::POST_TYPE)) {
-            $plugin_template = YP_CLASSIFIEDS_PATH . 'templates/single-yp_listing.php';
-            if (file_exists($plugin_template)) {
+            $theme_template = $this->locate_theme_template('single-yp_listing.php');
+
+            if ($theme_template) {
+                return $theme_template;
+            }
+
+            $plugin_template = $this->get_plugin_template_path('single-yp_listing.php');
+
+            if ($plugin_template) {
                 return $plugin_template;
             }
         }
@@ -36,6 +50,39 @@ class YP_Template_Loader {
         return $template;
     }
 
+    public function get_template_path($relative_path) {
+        $relative_path = ltrim((string) $relative_path, '/\\');
+
+        if ($relative_path === '') {
+            return '';
+        }
+
+        $theme_template = locate_template(array(
+            'yellow-paper-classifieds/' . $relative_path,
+        ));
+
+        if ($theme_template) {
+            return $theme_template;
+        }
+
+        return $this->get_plugin_template_path($relative_path);
+    }
+
+    private function locate_theme_template($filename) {
+        $filename = ltrim((string) $filename, '/\\');
+
+        return locate_template(array(
+            'yellow-paper-classifieds/' . $filename,
+            $filename,
+        ));
+    }
+
+    private function get_plugin_template_path($relative_path) {
+        $relative_path = ltrim((string) $relative_path, '/\\');
+        $plugin_template = YP_CLASSIFIEDS_PATH . 'templates/' . $relative_path;
+
+        return file_exists($plugin_template) ? $plugin_template : '';
+    }
     public function get_listing_card_data($post_id) {
         $category_id     = $this->get_primary_term_id($post_id, YP_Post_Types::TAXONOMY);
         $location_id     = $this->get_primary_term_id($post_id, YP_Post_Types::LOCATION_TAXONOMY);
