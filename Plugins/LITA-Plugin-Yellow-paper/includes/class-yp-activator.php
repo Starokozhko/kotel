@@ -18,6 +18,10 @@ class YP_Activator {
             yp_ensure_author_type_terms();
         }
 
+        if (class_exists('YP_Seller_Archive')) {
+            YP_Seller_Archive::register_rewrite_rule();
+        }
+
         if (class_exists('YP_Auth')) {
             YP_Auth::create_default_pages();
         }

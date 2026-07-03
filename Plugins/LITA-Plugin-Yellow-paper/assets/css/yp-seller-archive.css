@@ -1,0 +1,232 @@
+.yp-seller-archive {
+    background: #f4f7fb;
+    color: #111827;
+    padding: 32px 16px 48px;
+}
+
+.yp-seller-archive__inner {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.yp-seller-archive__breadcrumbs {
+    align-items: center;
+    color: #64748b;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 13px;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.yp-seller-archive__breadcrumbs a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.yp-seller-archive__breadcrumbs a:hover,
+.yp-seller-archive__breadcrumbs a:focus {
+    color: #0f4b90;
+    text-decoration: underline;
+}
+
+.yp-seller-archive__header {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    margin-bottom: 28px;
+}
+
+.yp-seller-archive__seller-card,
+.yp-seller-archive__contacts,
+.yp-seller-archive__listings {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgba(15, 75, 144, 0.08);
+}
+
+.yp-seller-archive__seller-card {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    min-width: 0;
+    padding: 24px;
+}
+
+.yp-seller-archive__avatar {
+    align-items: center;
+    background: #eaf2fb;
+    border-radius: 8px;
+    color: #0f4b90;
+    display: flex;
+    flex: 0 0 88px;
+    font-size: 36px;
+    font-weight: 800;
+    height: 88px;
+    justify-content: center;
+    overflow: hidden;
+    width: 88px;
+}
+
+.yp-seller-archive__avatar-image {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.yp-seller-archive__seller-info {
+    min-width: 0;
+}
+
+.yp-seller-archive__seller-info h1 {
+    color: #111827;
+    font-size: 32px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+}
+
+.yp-seller-archive__seller-info p {
+    color: #64748b;
+    margin: 6px 0 0;
+}
+
+.yp-seller-archive__type {
+    color: #0f4b90 !important;
+    font-weight: 700;
+}
+
+.yp-seller-archive__count {
+    color: #0a966a !important;
+    font-weight: 700;
+}
+
+.yp-seller-archive__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px;
+}
+
+.yp-seller-archive__phone {
+    align-items: center;
+    background: #16a34a;
+    border: 1px solid #16a34a;
+    border-radius: 6px;
+    color: #fff;
+    display: flex;
+    font-size: 20px;
+    font-weight: 800;
+    justify-content: center;
+    min-height: 52px;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+.yp-seller-archive__phone:hover,
+.yp-seller-archive__phone:focus {
+    background: #fff;
+    color: #0f4b90;
+    text-decoration: none;
+}
+
+.yp-seller-archive__contact-row {
+    border-top: 1px solid #e2e8f0;
+    display: grid;
+    gap: 4px;
+    padding-top: 14px;
+}
+
+.yp-seller-archive__contact-row span {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.yp-seller-archive__contact-row strong,
+.yp-seller-archive__contact-row a {
+    color: #111827;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.yp-seller-archive__contact-row a {
+    text-decoration: none;
+}
+
+.yp-seller-archive__contact-row a:hover,
+.yp-seller-archive__contact-row a:focus {
+    color: #0f4b90;
+    text-decoration: underline;
+}
+
+.yp-seller-archive__listings {
+    padding: 24px;
+}
+
+.yp-seller-archive__listings h2 {
+    font-size: 24px;
+    line-height: 1.25;
+    margin: 0 0 20px;
+}
+
+.yp-seller-archive__pagination {
+    margin-top: 28px;
+    text-align: center;
+}
+
+.yp-seller-archive__pagination .page-numbers {
+    align-items: center;
+    background: #fff;
+    border: 1px solid #dbe3ef;
+    border-radius: 6px;
+    color: #0f4b90;
+    display: inline-flex;
+    font-weight: 700;
+    justify-content: center;
+    margin: 4px;
+    min-height: 40px;
+    min-width: 40px;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+.yp-seller-archive__pagination .page-numbers.current,
+.yp-seller-archive__pagination .page-numbers:hover,
+.yp-seller-archive__pagination .page-numbers:focus {
+    background: #0f4b90;
+    border-color: #0f4b90;
+    color: #fff;
+}
+
+.yp-seller-archive__empty {
+    color: #64748b;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .yp-seller-archive__header {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .yp-seller-archive {
+        padding: 20px 12px 36px;
+    }
+
+    .yp-seller-archive__seller-card {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px;
+    }
+
+    .yp-seller-archive__contacts,
+    .yp-seller-archive__listings {
+        padding: 18px;
+    }
+
+    .yp-seller-archive__seller-info h1 {
+        font-size: 25px;
+    }
+}

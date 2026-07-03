@@ -22,13 +22,20 @@ class YP_Assets {
                 'yp-single-listing',
                 'assets/css/yp-single-listing.css'
             );
+
+            $this->enqueue_js(
+                'yp-single-listing',
+                'assets/js/yp-single-listing.js'
+            );
+
+            $needs_listing_card_css = true;
         }
 
         /**
          * Архів оголошень:
          * archive-yp_listing.php
          */
-        if (is_post_type_archive('yp_listing') || is_page_template('templates/template-find-yours.php')) {
+        if (is_post_type_archive('yp_listing') || is_tax(YP_Post_Types::TAXONOMY) || is_page_template('templates/template-find-yours.php')) {
             $this->enqueue_css(
                 'yp-listings-archive',
                 'assets/css/yp-listings-archive.css'
@@ -41,7 +48,19 @@ class YP_Assets {
          * Якщо це не сторінка акаунта — підключаємо тільки те,
          * що потрібно поза акаунтом, і виходимо.
          */
-        if (!$this->is_yp_account_area()) {
+
+        /**
+         * Public seller archive:
+         * /prodavets/{seller-slug}/
+         */
+        if (function_exists('yp_is_seller_archive') && yp_is_seller_archive()) {
+            $this->enqueue_css(
+                'yp-seller-archive',
+                'assets/css/yp-seller-archive.css'
+            );
+
+            $needs_listing_card_css = true;
+        }        if (!$this->is_yp_account_area()) {
             if ($needs_listing_card_css) {
                 $this->enqueue_css(
                     'yp-listing-card',
@@ -52,13 +71,13 @@ class YP_Assets {
             return;
         }
 
-        // Загальний CSS для всіх сторінок акаунта
+        // Загальний CSS для всіх сторінок акаунта.
         $this->enqueue_css(
             'yp-account',
             'assets/css/yp-account.css'
         );
 
-        // Сторінки входу / реєстрації / пароля
+        // Сторінки входу / реєстрації / пароля.
         if ($this->is_page_by_slug(array(
             'uviyty',
             'reyestratsiya',
@@ -72,7 +91,7 @@ class YP_Assets {
             );
         }
 
-        // Налаштування акаунта
+        // Налаштування акаунта.
         if ($this->is_page_by_slug('nalashtuvannya')) {
             $this->enqueue_css(
                 'yp-account-settings',
@@ -81,7 +100,7 @@ class YP_Assets {
             );
         }
 
-        // Подати оголошення
+        // Подати оголошення.
         if ($this->is_page_by_slug('podaty-ogoloshennya')) {
             $this->enqueue_css(
                 'yp-listing-form',
@@ -90,7 +109,7 @@ class YP_Assets {
             );
         }
 
-        // Мої оголошення
+        // Мої оголошення.
         if ($this->is_page_by_slug('moi-ogoloshennya')) {
             $this->enqueue_css(
                 'yp-my-listings',
@@ -101,7 +120,7 @@ class YP_Assets {
             $needs_listing_card_css = true;
         }
 
-        // Відправити запит / Банери
+        // Відправити запит / Банери.
         if ($this->is_page_by_slug(array('vidpravyty-zapyt', 'banery'))) {
             $this->enqueue_css(
                 'yp-support-request',
@@ -112,7 +131,7 @@ class YP_Assets {
 
         /**
          * CSS картки оголошення:
-         * template-parts/listing-card.php
+         * template-parts/listing-card.php / listing-card-compact.php
          */
         if ($needs_listing_card_css) {
             $this->enqueue_css(
@@ -132,6 +151,19 @@ class YP_Assets {
             $file_url,
             $deps,
             file_exists($file_path) ? filemtime($file_path) : YP_CLASSIFIEDS_VERSION
+        );
+    }
+
+    private function enqueue_js($handle, $relative_path, $deps = array()) {
+        $file_path = YP_CLASSIFIEDS_PATH . $relative_path;
+        $file_url  = YP_CLASSIFIEDS_URL . $relative_path;
+
+        wp_enqueue_script(
+            $handle,
+            $file_url,
+            $deps,
+            file_exists($file_path) ? filemtime($file_path) : YP_CLASSIFIEDS_VERSION,
+            true
         );
     }
 

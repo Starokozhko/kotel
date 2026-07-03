@@ -164,7 +164,7 @@ function bootstrap_scripts_and_styles()
         wp_enqueue_style('fancybox.v3', get_template_directory_uri() . '/css/plugins/jquery.fancyboxv3.css', null, '3.4.1');
         //
         //system
-        wp_enqueue_style('custom', get_template_directory_uri() . '/css/moxy.css', null, null);/*3rd priority*/
+        wp_enqueue_style('custom', get_template_directory_uri() . '/css/moxy.css', null, '1.0.8');/*3rd priority*/
         wp_enqueue_style('media-screens', get_template_directory_uri() . '/css/media-screens.css', null, null);/*2nd priority*/
         wp_enqueue_style('style', get_template_directory_uri() . '/style.css', null, null);/*1st priority*/
 

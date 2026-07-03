@@ -20,6 +20,7 @@ class YP_Plugin
 
     private $assets;
     private $template_loader;
+    private $seller_archive;
     private $frontend_submission;
 
     public function __construct()
@@ -38,6 +39,7 @@ class YP_Plugin
         $this->auth = new YP_Auth();
         $this->account = new YP_Account($this->user_profile);
         $this->template_loader = new YP_Template_Loader($this->listing_images, $this->user_profile);
+        $this->seller_archive = new YP_Seller_Archive($this->user_profile, $this->template_loader);
         $this->frontend_submission = new YP_Frontend_Submission($this->listing_images);
     }
 
@@ -54,6 +56,7 @@ class YP_Plugin
         $this->auth->hooks();
         $this->account->hooks();
         $this->template_loader->hooks();
+        $this->seller_archive->hooks();
         $this->frontend_submission->hooks();
     }
 

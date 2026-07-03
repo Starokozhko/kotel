@@ -508,9 +508,12 @@ a {
     flex-direction: column;
     gap: 20px; }
   .main-content h1 {
-    font-size: 64px;
+    font-size: 40px;
     font-family: "Sora";
     margin-bottom: 10px; }
+    @media (min-width: 991px) {
+      .main-content h1 {
+        font-size: 64px; } }
   .main-content h1, .main-content p {
     width: 100%; }
   .main-content p {
@@ -1469,6 +1472,11 @@ a {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px; }
+  @media (max-width: 640px) {
+    .yp-listing-head {
+      margin-top: 40px;
+      flex-direction: column;
+      gap: 20px; } }
 
 .yp-listing-grid {
   display: grid;

@@ -19,6 +19,7 @@ define('YP_CLASSIFIEDS_PATH', plugin_dir_path(__FILE__));
 define('YP_CLASSIFIEDS_URL', plugin_dir_url(__FILE__));
 
 require_once YP_CLASSIFIEDS_PATH . 'includes/yp-account-type-helpers.php';
+require_once YP_CLASSIFIEDS_PATH . 'includes/yp-category-nav-helpers.php';
 require_once YP_CLASSIFIEDS_PATH . 'includes/class-yp-loader.php';
 require_once YP_CLASSIFIEDS_PATH . 'includes/class-yp-activator.php';
 require_once YP_CLASSIFIEDS_PATH . 'includes/class-yp-deactivator.php';
@@ -34,6 +35,7 @@ require_once YP_CLASSIFIEDS_PATH . 'includes/class-yp-user-profile.php';
 require_once YP_CLASSIFIEDS_PATH . 'includes/class-yp-auth.php';
 require_once YP_CLASSIFIEDS_PATH . 'includes/class-yp-account.php';
 require_once YP_CLASSIFIEDS_PATH . 'includes/class-yp-template-loader.php';
+require_once YP_CLASSIFIEDS_PATH . 'includes/class-yp-seller-archive.php';
 require_once YP_CLASSIFIEDS_PATH . 'includes/class-yp-frontend-submission.php';
 require_once YP_CLASSIFIEDS_PATH . 'includes/class-yp-plugin.php';
 

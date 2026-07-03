@@ -62,6 +62,10 @@
   }
 }
 
+
+.yp-single-gallery__nav {
+
+}
 .yp-listings-archive__item {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, .15);
@@ -109,6 +113,11 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  @media (max-width: 640px) {
+    margin-top: 40px;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 .yp-listing-grid {
