@@ -115,39 +115,41 @@
   /* TOP BAR STYLING */
   .navbar {
     padding: 0; }
-    .navbar .navbar-nav .nav-link {
-      /* Regular menu item style */
-      display: block;
-      padding: 0 15px;
-      background: transparent;
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 40px;
-      color: #0f4b90;
-      font-family: "Open Sans", sans-serif; }
-      .navbar .navbar-nav .nav-link:hover {
-        /* menu item style on hover */
+    .navbar .navbar-nav {
+      gap: 10px; }
+      .navbar .navbar-nav .nav-link {
+        /* Regular menu item style */
+        display: block;
+        padding: 0 10px;
+        background: transparent;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 36px;
+        color: #0f4b90;
+        font-family: "Open Sans", sans-serif; }
+        .navbar .navbar-nav .nav-link:hover {
+          /* menu item style on hover */
+          background: #0f4b90;
+          color: #fff; }
+      .navbar .navbar-nav .current-menu-item > a, .navbar .navbar-nav .current_page_ancestor > a, .navbar .navbar-nav .current_page_parent > a {
+        /* Style of Current page and Ancestor page */
         background: #0f4b90;
         color: #fff; }
-    .navbar .navbar-nav .current-menu-item > a, .navbar .navbar-nav .current_page_ancestor > a, .navbar .navbar-nav .current_page_parent > a {
-      /* Style of Current page and Ancestor page */
-      background: #0f4b90;
-      color: #fff; }
-    .navbar .navbar-nav .dropdown-menu {
-      margin-top: 0;
-      border: none;
-      padding: 0;
-      border-radius: 0; }
-    .navbar .navbar-nav .dropdown-item {
-      /* Regular link in dropdown */
-      background: #f0b46f;
-      color: #fff;
-      padding: 5px 15px;
-      line-height: 30px; }
-      .navbar .navbar-nav .dropdown-item:hover {
-        /* Dropdown link on hover */
-        background: #1463be;
-        color: white; }
+      .navbar .navbar-nav .dropdown-menu {
+        margin-top: 0;
+        border: none;
+        padding: 0;
+        border-radius: 0; }
+      .navbar .navbar-nav .dropdown-item {
+        /* Regular link in dropdown */
+        background: #f0b46f;
+        color: #fff;
+        padding: 5px 15px;
+        line-height: 30px; }
+        .navbar .navbar-nav .dropdown-item:hover {
+          /* Dropdown link on hover */
+          background: #1463be;
+          color: white; }
   /* Dropdown item styling */
   .navbar .nav-item:hover > .nav-link {
     /* Parent link style on dropdown hover */ }

@@ -387,6 +387,12 @@ if ($leaf_term instanceof WP_Term) {
                         <p class="yp-single-price-card__note"><?php echo esc_html($data['sale_conditions']); ?></p>
                     <?php endif; ?>
 
+                    <?php if (!empty($data['availability']) && $data['availability'] instanceof WP_Term && function_exists('yp_render_listing_availability_badge')) : ?>
+                        <div class="yp-single-price-card__availability">
+                            <?php echo wp_kses_post(yp_render_listing_availability_badge($post_id)); ?>
+                        </div>
+                    <?php endif; ?>
+
                     <?php if (!empty($data['phone_formatted']) && $phone_digits !== '') : ?>
                         <a class="yp-single-price-card__phone" href="tel:+<?php echo esc_attr($phone_digits); ?>"><?php echo esc_html($data['phone_formatted']); ?></a>
                     <?php endif; ?>
@@ -434,13 +440,22 @@ if ($leaf_term instanceof WP_Term) {
                 <section class="yp-single-sidebar-card yp-single-info-card">
                     <h2><?php esc_html_e('Інформація', 'yellow-paper-classifieds'); ?></h2>
                     <dl>
-                        <?php if ($published instanceof DateTimeInterface) : ?>
+                    <?php if ($published instanceof DateTimeInterface) : ?>
                             <div><dt><?php esc_html_e('Опубліковано', 'yellow-paper-classifieds'); ?></dt><dd><?php echo esc_html(yp_single_format_date($published)); ?></dd></div>
                         <?php endif; ?>
                         <?php if ($modified instanceof DateTimeInterface && $published instanceof DateTimeInterface && $modified->getTimestamp() !== $published->getTimestamp()) : ?>
                             <div><dt><?php esc_html_e('Оновлено', 'yellow-paper-classifieds'); ?></dt><dd><?php echo esc_html(yp_single_format_date($modified)); ?></dd></div>
                         <?php endif; ?>
-                        <div><dt><?php esc_html_e('ID', 'yellow-paper-classifieds'); ?></dt><dd><?php echo esc_html($post_id); ?></dd></div>
+                    <?php if (!empty($data['sku'])) : ?>
+                        <div><dt><?php esc_html_e('Артикул', 'yellow-paper-classifieds'); ?></dt><dd><?php echo esc_html($data['sku']); ?></dd></div>
+                    <?php endif; ?>
+                    <?php if (!empty($data['condition']) && $data['condition'] instanceof WP_Term) : ?>
+                        <div><dt><?php esc_html_e('Стан', 'yellow-paper-classifieds'); ?></dt><dd><?php echo esc_html($data['condition']->name); ?></dd></div>
+                    <?php endif; ?>
+                    <?php if (!empty($data['availability']) && $data['availability'] instanceof WP_Term) : ?>
+                        <div><dt><?php esc_html_e('Наявність', 'yellow-paper-classifieds'); ?></dt><dd><?php echo esc_html($data['availability']->name); ?></dd></div>
+                    <?php endif; ?>
+                    <div><dt><?php esc_html_e('ID', 'yellow-paper-classifieds'); ?></dt><dd><?php echo esc_html($post_id); ?></dd></div>
                         <?php if ($views !== '') : ?>
                             <div><dt><?php esc_html_e('Перегляди', 'yellow-paper-classifieds'); ?></dt><dd><?php echo esc_html(absint($views)); ?></dd></div>
                         <?php endif; ?>

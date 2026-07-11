@@ -123,6 +123,16 @@ function bootstrap_widgets_init()
             'before_title' => '<h5>',
             'after_title' => '</h5>',
     ));
+    /* Sidebar Three */
+    register_sidebar(array(
+            'id' => 'bootstrap_sidebar_three',
+            'name' => __('Sidebar Three'),
+            'description' => __('Цей блок знаходиться в секції Повідомлення'),
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => '</aside>',
+            'before_title' => '<h5>',
+            'after_title' => '</h5>',
+    ));
 }
 
 add_action('widgets_init', 'bootstrap_widgets_init');
@@ -164,7 +174,7 @@ function bootstrap_scripts_and_styles()
         wp_enqueue_style('fancybox.v3', get_template_directory_uri() . '/css/plugins/jquery.fancyboxv3.css', null, '3.4.1');
         //
         //system
-        wp_enqueue_style('custom', get_template_directory_uri() . '/css/moxy.css', null, '1.0.8');/*3rd priority*/
+        wp_enqueue_style('custom', get_template_directory_uri() . '/css/moxy.css', null, '1.0.9');/*3rd priority*/
         wp_enqueue_style('media-screens', get_template_directory_uri() . '/css/media-screens.css', null, null);/*2nd priority*/
         wp_enqueue_style('style', get_template_directory_uri() . '/style.css', null, null);/*1st priority*/
 
@@ -474,11 +484,11 @@ add_theme_support('woocommerce');
 
 
 /* Прибрати кнопку купівлі */
-add_action('template_redirect', function () {
-    if (is_product()) {
-        remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
-    }
-});
+//add_action('template_redirect', function () {
+//    if (is_product()) {
+//        remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+//    }
+//});
 
 /*  Повністю прибрати функціонал Відгуків про товар*/
 add_filter('woocommerce_product_tabs', function ($tabs) {
@@ -1107,6 +1117,181 @@ function lita_get_acf_image_data($image) {
     return $data;
 }
 
+function lita_find_yp_listing_category_term_by_candidates($slugs = array(), $names = array())
+{
+    foreach ((array) $slugs as $slug) {
+        $slug = sanitize_title($slug);
+
+        if ($slug === '') {
+            continue;
+        }
+
+        $term = get_term_by('slug', $slug, 'yp_listing_category');
+
+        if ($term && !is_wp_error($term)) {
+            return $term;
+        }
+    }
+
+    foreach ((array) $names as $name) {
+        $name = trim((string) $name);
+
+        if ($name === '') {
+            continue;
+        }
+
+        $term = get_term_by('name', $name, 'yp_listing_category');
+
+        if ($term && !is_wp_error($term)) {
+            return $term;
+        }
+    }
+
+    return null;
+}
+
+function lita_format_yp_mini_listing_date($post_id)
+{
+    $post_time = (int) get_post_time('U', false, $post_id);
+
+    if (!$post_time) {
+        return '';
+    }
+
+    $time = wp_date('H:i', $post_time);
+    $post_date = wp_date('Y-m-d', $post_time);
+    $today = wp_date('Y-m-d', current_time('timestamp'));
+    $yesterday = wp_date('Y-m-d', strtotime('-1 day', current_time('timestamp')));
+
+    if ($post_date === $today) {
+        return sprintf(__('Сьогодні, %s', 'yellow-paper-classifieds'), $time);
+    }
+
+    if ($post_date === $yesterday) {
+        return sprintf(__('Вчора, %s', 'yellow-paper-classifieds'), $time);
+    }
+
+    return sprintf('%s, %s', wp_date('j.m.y', $post_time), $time);
+}
+
+function lita_get_yp_find_yours_mini_listing_query($term_ids)
+{
+    $term_ids = array_values(array_filter(array_map('absint', (array) $term_ids)));
+
+    if (empty($term_ids)) {
+        return null;
+    }
+
+    return new WP_Query(array(
+            'post_type' => 'yp_listing',
+            'post_status' => 'publish',
+            'posts_per_page' => 3,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'ignore_sticky_posts' => true,
+            'no_found_rows' => true,
+            'update_post_meta_cache' => false,
+            'update_post_term_cache' => false,
+            'tax_query' => array(
+                    array(
+                            'taxonomy' => 'yp_listing_category',
+                            'field' => 'term_id',
+                            'terms' => $term_ids,
+                            'include_children' => true,
+                    ),
+            ),
+            'meta_query' => array(
+                    'relation' => 'AND',
+                    array(
+                            'key' => '_yp_visibility',
+                            'value' => 'public',
+                            'compare' => '=',
+                    ),
+                    array(
+                            'key' => '_yp_moderation_status',
+                            'value' => 'approved',
+                            'compare' => '=',
+                    ),
+            ),
+    ));
+}
+
+function lita_get_yp_find_yours_info_strip_sections()
+{
+    $sections = array();
+
+    $lost_found_combined = lita_find_yp_listing_category_term_by_candidates(
+            array('zahubyv-znayshov', 'zagubyv-znayshov', 'zahubyv-znajshov', 'zagubyv-znajshov', 'lost-found'),
+            array('Загубив / Знайшов', 'Загубив-Знайшов', 'Загубив Знайшов')
+    );
+    $lost_found_terms = array();
+    $lost_found_link = '';
+
+    if ($lost_found_combined) {
+        $lost_found_terms[] = $lost_found_combined;
+        $term_link = get_term_link($lost_found_combined, 'yp_listing_category');
+
+        if (!is_wp_error($term_link)) {
+            $lost_found_link = $term_link;
+        }
+    } else {
+        $lost_term = lita_find_yp_listing_category_term_by_candidates(
+                array('zahubyv', 'zagubyv', 'zahybyv'),
+                array('Загубив')
+        );
+        $found_term = lita_find_yp_listing_category_term_by_candidates(
+                array('znayshov', 'znaishov', 'znajshov'),
+                array('Знайшов')
+        );
+
+        if ($lost_term) {
+            $lost_found_terms[] = $lost_term;
+        }
+
+        if ($found_term) {
+            $lost_found_terms[] = $found_term;
+        }
+    }
+
+    $lost_found_query = lita_get_yp_find_yours_mini_listing_query(wp_list_pluck($lost_found_terms, 'term_id'));
+
+    if ($lost_found_query && $lost_found_query->have_posts()) {
+        $sections[] = array(
+                'title' => __('Загубив / Знайшов', 'yellow-paper-classifieds'),
+                'modifier' => 'lost-found',
+                'archive_url' => $lost_found_link,
+                'query' => $lost_found_query,
+        );
+    }
+
+    $messages_term = lita_find_yp_listing_category_term_by_candidates(
+            array('povidomlennia', 'povidomlennya', 'povidomlennja'),
+            array('Повідомлення')
+    );
+    $messages_link = '';
+    $messages_query = null;
+
+    if ($messages_term) {
+        $term_link = get_term_link($messages_term, 'yp_listing_category');
+
+        if (!is_wp_error($term_link)) {
+            $messages_link = $term_link;
+        }
+
+        $messages_query = lita_get_yp_find_yours_mini_listing_query(array($messages_term->term_id));
+    }
+
+    if ($messages_query && $messages_query->have_posts()) {
+        $sections[] = array(
+                'title' => __('Повідомлення', 'yellow-paper-classifieds'),
+                'modifier' => 'messages',
+                'archive_url' => $messages_link,
+                'query' => $messages_query,
+        );
+    }
+
+    return $sections;
+}
 function lita_render_yp_category_slider_section($args = array())
 {
     if (
@@ -1267,3 +1452,4 @@ function lita_enqueue_find_yours_assets()
 }
 
 add_action('wp_enqueue_scripts', 'lita_enqueue_find_yours_assets', 20);
+

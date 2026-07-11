@@ -15,7 +15,7 @@
                 }
                 //?>
             </div>
-            <div class="col-12">
+            <div class="col-12 text-center">
                 <?php if( $workHours = get_field('work_hours','option') ): ?>
                   <div class="footer__content"><?= $workHours; ?></div>
                 <?php endif; ?>

@@ -42,8 +42,11 @@
     text-decoration: none;
     color: $text_color;
     width: 100%;
-    max-width: 32%;
+    max-width: 100%;
     margin: 0 auto;
+    @media (min-width: 768px) {
+      max-width: 32%;
+    }
 
     &:hover,
     &:focus {

@@ -6,20 +6,32 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PT5B6ZN');</script>
+    <!-- End Google Tag Manager -->
     <!-- Set up Meta -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta charset="<?php bloginfo('charset'); ?>">
 
     <!-- Set the viewport width to device width for mobile -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-
-    <!-- Add Google Fonts -->
-<!--    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700,800' rel='stylesheet'-->
-<!--          type='text/css'>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0, user-scalable=yes">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap"
+          rel="stylesheet">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KR9HKWZQB"></script>
@@ -41,6 +53,12 @@
 </head>
 
 <body <?php body_class(); ?>>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PT5B6ZN"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!-- BEGIN of header -->
 <header class="header ">
@@ -113,13 +131,11 @@
                     <?= do_shortcode('[yp_auth_links]'); ?>
 
 
-                    <?php if ($tel = get_field('phone', 'option')): ?>
-                        <a class="link-icon" href="tel:<?= preparePhone($tel); ?>"><img
-                                    src="<?= get_template_directory_uri(); ?>/images/icon-phone.svg" alt=""></a>
-                    <?php endif; ?>
+<!--                    --><?php //if ($tel = get_field('phone', 'option')): ?>
+<!--                        <a class="link-icon" href="tel:--><?php //= preparePhone($tel); ?><!--"><img-->
+<!--                                    src="--><?php //= get_template_directory_uri(); ?><!--/images/icon-phone.svg" alt=""></a>-->
+<!--                    --><?php //endif; ?>
                 </div>
-
-
             </div>
         </div>
     </div>

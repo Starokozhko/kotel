@@ -10,11 +10,11 @@ get_header(); ?>
     <!--END of HOME PAGE SLIDER-->
 
 
-    <div class="text-center" style="margin-top: 20px; padding: 0 10px 10px; border-bottom: 10px dashed #fcbb1d">
-        <h3 class="text-center">Сайт на стадії розробки</h3>
-        <p>Ви можете спробувати <a href="https://kotelva.info/reyestratsiya/">зареєструватися</a> та подати оголошення
-        </p>
-    </div>
+<!--    <div class="text-center" style="margin-top: 20px; padding: 0 10px 10px; border-bottom: 10px dashed #fcbb1d">-->
+<!--        <h3 class="text-center">Сайт на стадії розробки</h3>-->
+<!--        <p>Ви можете спробувати <a href="https://kotelva.info/reyestratsiya/">зареєструватися</a> та подати оголошення-->
+<!--        </p>-->
+<!--    </div>-->
 
 
     <!-- BEGIN of main content -->
@@ -35,22 +35,33 @@ get_header(); ?>
     </div>
     <!-- END of main content -->
 
-    <div class="container ">
-        <div class="row">
-            <div class="col-12 col-md-8">
-                <?php show_template('part-flexible'); ?>
-            </div>
+<!--    <div class="container ">-->
+<!--        <div class="row">-->
+<!--            <div class="col-12 col-md-8">-->
+<!--                --><?php //show_template('part-flexible'); ?>
+<!--            </div>-->
+<!--            --><?php //get_sidebar('right'); ?>
+<!--        </div>-->
+<!--    </div>-->
+
+<?php
+$info_strip_sections = function_exists('lita_get_yp_find_yours_info_strip_sections') ? lita_get_yp_find_yours_info_strip_sections() : array();
+$info_strip_partial = function_exists('lita_locate_yp_template') ? lita_locate_yp_template('parts/mini-listing-section.php') : locate_template('yellow-paper-classifieds/parts/mini-listing-section.php');
+?>
+
+<?php if (!empty($info_strip_sections) && $info_strip_partial) : ?>
+    <section class="yp-find-yours-info-strip" style="margin: 40px 0;" aria-label="<?php esc_attr_e('Корисні оголошення', 'yellow-paper-classifieds'); ?>">
+        <div class="container">
+        <div class="yp-find-yours-info-strip__grid">
+            <?php foreach ($info_strip_sections as $mini_section) : ?>
+                <?php include $info_strip_partial; ?>
+            <?php endforeach; ?>
 
 
-            <?php get_sidebar('right'); ?>
-
-            <!--        <div class="col-12 col-md-4">-->
-
-            <!--            --><?php //echo do_shortcode( '[ads_banner location="sidebar" type="single" banner_type="image"]' ); ?>
-            <!--        </div>-->
-
+            <?php get_sidebar('three'); ?>
         </div>
-    </div>
-
+        </div>
+    </section>
+<?php endif; ?>
 
 <?php get_footer(); ?>

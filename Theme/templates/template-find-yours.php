@@ -3,24 +3,19 @@
  * Template Name: Find Yours
  * Template Post Type: page
  */
-
 if (!defined('ABSPATH')) {
     exit;
 }
-
 get_header();
-
 if (
         !class_exists('YP_Template_Loader') ||
         !class_exists('YP_Listing_Images') ||
         !class_exists('YP_User_Profile') ||
         !defined('YP_CLASSIFIEDS_PATH')
 ) : ?>
-
     <main class="yp-listings-archive" style="max-width:1200px;margin:0 auto;padding:32px 16px;">
         <p><?php esc_html_e('Плагін оголошень не активний або потрібні класи недоступні.', 'yellow-paper-classifieds'); ?></p>
     </main>
-
     <?php
     get_footer();
     return;
@@ -301,6 +296,7 @@ $listings_query = new WP_Query(array(
             <?php endif; ?>
         </section>
 
+
         <?php
         $category_sections = function_exists('get_field') ? get_field('sections-cat') : array();
 
@@ -345,6 +341,22 @@ $listings_query = new WP_Query(array(
             endforeach;
         endif;
         ?>
+        <?php
+        $info_strip_sections = function_exists('lita_get_yp_find_yours_info_strip_sections') ? lita_get_yp_find_yours_info_strip_sections() : array();
+        $info_strip_partial = function_exists('lita_locate_yp_template') ? lita_locate_yp_template('parts/mini-listing-section.php') : locate_template('yellow-paper-classifieds/parts/mini-listing-section.php');
+        ?>
+        <?php if (!empty($info_strip_sections) && $info_strip_partial) : ?>
+            <section class="yp-find-yours-info-strip" aria-label="<?php esc_attr_e('Корисні оголошення', 'yellow-paper-classifieds'); ?>">
+                <div class="yp-find-yours-info-strip__grid">
+                    <?php foreach ($info_strip_sections as $mini_section) : ?>
+                        <?php include $info_strip_partial; ?>
+                    <?php endforeach; ?>
+
+                    <?php get_sidebar('three'); ?>
+                </div>
+            </section>
+        <?php endif; ?>
     </main>
 
 <?php get_footer(); ?>
+

@@ -55,10 +55,10 @@
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid #ccc;
-    @media screen and (max-width: 767px) and (min-width: 641px) {
+    @media screen and (max-width: 990px) and (min-width: 641px) {
       max-width: 47%;
     }
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 991px) {
       max-width: 24%;
     }
 
@@ -69,7 +69,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
 
-      @media screen and (min-width: 768px) {
+      @media screen and (min-width: 991px) {
         max-width: 48%;
         flex: 48%;
       }
